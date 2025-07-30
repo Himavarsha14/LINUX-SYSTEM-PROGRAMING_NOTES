@@ -61,12 +61,14 @@ When a new process is created using fork(), the original process becomes the par
 ->Parent gets the **PID of the child**.
 ->Child gets 0 as return value from fork().
 **Example**
+```c
 pid_t pid = fork();
 if (pid == 0) {
     printf("This is the child process\n");
 } else {
     printf("This is the parent process\n");
 }
+```
 ->If fork system call fails to create process it return "-1".
 **Orphan Process**
 ->An **orphan process** is a process whose parent has terminated before it.
