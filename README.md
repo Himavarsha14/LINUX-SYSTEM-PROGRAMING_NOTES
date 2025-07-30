@@ -56,6 +56,26 @@ A new PCB is created for the child process.Memory (code, data, etc.) is logicall
 -fork() returns:
 -0 to the child process.
 -PID of child to the parent process.
+## 2.Parent-Child Process Relationship
+When a new process is created using fork(), the original process becomes the parent and the new one becomes the child.
+->Parent gets the **PID of the child**.
+->Child gets 0 as return value from fork().
+**Example**
+pid_t pid = fork();
+if (pid == 0) {
+    printf("This is the child process\n");
+} else {
+    printf("This is the parent process\n");
+}
+->If fork system call fails to create process it return "-1".
+**Orphan Process**
+->An **orphan process** is a process whose parent has terminated before it.
+->The **init process (PID 1)** adopts orphan processes.
+->Ensures system doesn't leave processes unmanaged.
+## 3.System Calls: wait() and exit()
+->exit():Terminates the current process and returns a status code to the OS.
+->wait():Makes the parent wait untill its child finishes execution and collects its exit status.
+
 
 
 
